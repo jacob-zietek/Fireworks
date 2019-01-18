@@ -27,7 +27,7 @@ void draw(){
     x++;
   }
   
-  for(int i = 0; i < removeFirework.length; i++){
+  for(int i = removeFirework.length-1; i >= 0; i--){
     if(removeFirework[i])
       firework.remove(i);
   }
