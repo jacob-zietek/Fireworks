@@ -27,7 +27,7 @@ void draw(){
     x++;
   }
   
-  for(int i = removeFirework.length-1; i >= 0; i--){
+  for(int i = removeFirework.length - 1; i >= 0; i--){
     if(removeFirework[i])
       firework.remove(i);
   }
@@ -55,7 +55,8 @@ class Firework{
       if(vel <= 0){
         exploded = true;
         for(int i = 0; i < particles.length; i++){
-          particles[i] = new Particle(x, y);
+          particles[i] = new Particle();
+          particles[i].setParticle(x, y);
         }
       }
     }
@@ -90,6 +91,17 @@ class Particle{
    private int b;
    private int a;
    
+   void setParticle(int vx, int vy){
+     x = vx;
+     y = vy;
+     velx = random(-3, 3) * random(.5, 1);
+     vely = random(-3, 5) * random(.5, 1);
+     r = (int)random(255);
+     g = (int)random(255);
+     b = (int)random(255);
+     a = 255;
+   }
+   
    void show(){
     point(x, y); 
    }
@@ -117,14 +129,10 @@ class Particle{
      return a;
    }
    
-   Particle(int vx, int vy){
-     x = vx;
-     y = vy;
-     velx = random(-3, 3) * random(.5, 1);
-     vely = random(-3, 5) * random(.5, 1);
-     r = (int)random(255);
-     g = (int)random(255);
-     b = (int)random(255);
-     a = 255;
+   Particle(){
+     x = 0;
+     y = 0;
+     velx = 0;
+     vely = 0;
    }
 }
